@@ -11,7 +11,7 @@ const app = new App({
 
 app.message('hello', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
-  await say(`Hey there Vonta! Hi Juli! Hi KB!!! <@${message.user}>!`);
+  await say(`Oh, hey there! <@${message.user}>!`);
 });
 
 (async () => {
