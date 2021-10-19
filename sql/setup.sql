@@ -4,34 +4,34 @@ DROP TABLE IF EXISTS funny;
 DROP TABLE IF EXISTS favorite;
 
 CREATE TABLE course (
-    id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     course TEXT NOT NULL
 );
 
 
 CREATE TABLE tips (
-    id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     tip TEXT NOT NULL,
     tip_url TEXT,
-    course_id BIGINT NOT NULL
-    FOREIGN KEY course_id REFERENCES course(id),
+    course_id BIGINT NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES course(id),
     times_viewed INT 
 );
 
 CREATE TABLE funny (
-    id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     entree TEXT NOT NULL,
-    course_id BIGINT NOT NULL
-    FOREIGN KEY course_id REFERENCES course(id),
+    course_id BIGINT NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES course(id),
     times_viewed INT
 );
 
 CREATE TABLE favorite (
-    id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
-    tips_id BIGINT 
-    FOREIGN KEY tips_id REFERENCES tips(id),
-    funny_id BIGINT
-    FOREIGN KEY funny_id REFERENCES funny(id)
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tips_id BIGINT,
+    FOREIGN KEY (tips_id) REFERENCES tips(id),
+    funny_id BIGINT,
+    FOREIGN KEY (funny_id) REFERENCES funny(id)
 );
 
 
