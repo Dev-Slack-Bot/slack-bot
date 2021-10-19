@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS tips;
 DROP TABLE IF EXISTS funny;
 DROP TABLE IF EXISTS favorite;
+DROP TABLE IF EXISTS users;
+
 
 CREATE TABLE course (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -16,6 +18,7 @@ CREATE TABLE tips (
     course_id BIGINT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES course(id),
     times_viewed INT 
+
 );
 
 CREATE TABLE funny (
@@ -27,12 +30,25 @@ CREATE TABLE funny (
 );
 
 CREATE TABLE favorite (
+<<<<<<< HEAD
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+=======
+    id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+>>>>>>> ff46b69628878fbe3bf38d9da364d32654b4d39b
     tips_id BIGINT,
     FOREIGN KEY (tips_id) REFERENCES tips(id),
     funny_id BIGINT,
     FOREIGN KEY (funny_id) REFERENCES funny(id)
 );
+
+CREATE TABLE users (
+    id TEXT NOT NULL,
+    username TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+
 
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
