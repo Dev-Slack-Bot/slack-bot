@@ -15,7 +15,7 @@ CREATE TABLE tips (
     tip_url TEXT,
     course_id BIGINT NOT NULL
     FOREIGN KEY course_id REFERENCES course(id),
-    times_viewed INT
+    times_viewed INT 
 );
 
 CREATE TABLE funny (
@@ -33,7 +33,6 @@ CREATE TABLE favorite (
     funny_id BIGINT
     FOREIGN KEY funny_id REFERENCES funny(id)
 );
-
 
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
