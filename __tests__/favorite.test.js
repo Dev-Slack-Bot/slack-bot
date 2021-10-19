@@ -8,18 +8,22 @@ describe('slack-bot routes', () => {
     return setup(pool);
   });
 
-  it('should get a random funny entree with /GET', async () => {
+  it('should post a new favorite to userId after selected', async () => {
     return await request(app)
-      .get('/api/v1/funnys')
+      .get('/api/v1/favorites')
       .then((res) => {
         expect(res.body).toEqual({
           id: expect.any(String),
-          entree: expect.any(String),
-          course_id: expect.any(String),
-          times_viewed: expect.any(Number),
+          user_id: expect.any(String),
+          tips_id: expect.any(String) || null,
+          course_id: expect.any(String) || null,
         });
       });
   });
+
+  //getAllFavsById
+
+  //delete
 
   afterAll(() => {
     pool.end();
