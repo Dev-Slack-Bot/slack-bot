@@ -30,13 +30,9 @@ CREATE TABLE funny (
 );
 
 CREATE TABLE favorite (
-<<<<<<< HEAD
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-=======
     id BIGINT GENERATED ALWAYS AS PRIMARY KEY,
     user_id TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
->>>>>>> ff46b69628878fbe3bf38d9da364d32654b4d39b
     tips_id BIGINT,
     FOREIGN KEY (tips_id) REFERENCES tips(id),
     funny_id BIGINT,
