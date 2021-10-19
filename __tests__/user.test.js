@@ -8,22 +8,17 @@ describe('slack-bot routes', () => {
     return setup(pool);
   });
 
-  it('should post a new favorite to userId after selected', async () => {
+  it('should post a user', async () => {
     return await request(app)
-      .post('/api/v1/favorites')
+      .post('/api/v1/users')
       .then((res) => {
         expect(res.body).toEqual({
           id: expect.any(String),
-          user_id: expect.any(String),
-          tips_id: expect.any(String),
-          course_id: expect.any(String),
+          username: expect.any(String),
+          name: expect.any(String),
         });
       });
   });
-
-  //getAllFavsById
-
-  //delete
 
   afterAll(() => {
     pool.end();
