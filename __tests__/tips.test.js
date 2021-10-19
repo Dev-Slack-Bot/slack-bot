@@ -20,9 +20,27 @@ describe('slack-bot tip routes', () => {
         });
       });
   });
+  expect.extend({
+    toBeNullOrString(received) {
+      if (received === String) {
+        return {
+          pass: true
+        };
+      }else if (received === null) {
+        return {
+          pass: true
+        };
+      } else {
+        return {
+          pass: false,
+        };
+      }
+    }
+  }),
+
   it('should get a top 10 most viewed tips with /GET', async () => {
     return await request(app)
-      .get('/api/v1/tips')
+      .get('/api/v1/tips/toptips')
       .then((res) => {
         expect(res.body).toEqual([{
           tip: expect.any(String),
@@ -42,6 +60,16 @@ describe('slack-bot tip routes', () => {
         }, {
           tip: expect.any(String),
           tipUrl: expect.any(String),
+          course: expect.any(String),
+          timesViewed: expect.any(Number),
+        }, {
+          tip: expect.any(String),
+          tipUrl: expect.any(String),
+          course: expect.any(String),
+          timesViewed: expect.any(Number),
+        }, {
+          tip: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }]);
