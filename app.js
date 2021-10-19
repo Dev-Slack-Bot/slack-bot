@@ -59,7 +59,7 @@ app.action('button_click', async ({ body, ack, say }) => {
 
   if(tipOrFunnyValue === '1') {
     // randomize the sql query to return choosen comment
-    // const randomEntree = Math.floor(Math.random() * entree.length);
+    // const randomEntree = Math.floor(Math.random() * .length);
     await say({
       'blocks': [
         {
@@ -75,7 +75,7 @@ app.action('button_click', async ({ body, ack, say }) => {
         }
       ]
     });
-    
+
   } else if(tipOrFunnyValue === '2') {
 
     await say({
