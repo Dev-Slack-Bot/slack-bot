@@ -15,9 +15,9 @@ describe('slack-bot routes', () => {
       .send(newUser)
       .then((res) => {
         expect(res.body).toEqual({
-          id: expect.any(String),
-          username: expect.any(String),
-          name: expect.any(String),
+          id: 'newUser4321',
+          username: 'newbie',
+          name: 'newGuy',
         });
       });
   });
