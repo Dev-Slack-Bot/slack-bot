@@ -45,12 +45,56 @@ app.message('hello', async ({ message, say }) => {
     ]
   });
 });
-    
+
+// console.log user value
+// grab that value 
+// if (value 1 or 2) is choosen
+// await and generate pulled sql tip or funny (import random function body)
+
 app.action('button_click', async ({ body, ack, say }) => {
+  
   await ack();
-  const co = body.user.id;
-  await say(`<@${body.user.id}> clicked the button`);
-  console.log(co);
+  console.log(body.actions[0].selected_option.value);
+  const tipOrFunnyValue = body.actions[0].selected_option.value;
+
+  if(tipOrFunnyValue === '1') {
+    // randomize the sql query to return choosen comment
+    // const randomEntree = Math.floor(Math.random() * .length);
+    await say({
+      'blocks': [
+        {
+          'type': 'divider'
+        },
+        {
+          'type': 'header',
+          'text': {
+            'type': 'plain_text',
+            'text': 'FUNNY DEV SLOGANS!',
+            'emoji': true
+          }
+        }
+      ]
+    });
+
+  } else if(tipOrFunnyValue === '2') {
+
+    await say({
+      'blocks': [
+        {
+          'type': 'divider'
+        },
+        {
+          'type': 'header',
+          'text': {
+            'type': 'plain_text',
+            'text': 'DEV TIPS N TRICKS!',
+            'emoji': true
+          }
+        }
+      ]
+    });
+  }
+  
 });
 
 (async () => {
