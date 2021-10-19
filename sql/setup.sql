@@ -18,6 +18,7 @@ CREATE TABLE tips (
     course_id BIGINT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES course(id),
     times_viewed INT 
+
 );
 
 CREATE TABLE funny (
@@ -43,7 +44,6 @@ CREATE TABLE users (
     username TEXT NOT NULL,
     name TEXT NOT NULL
 );
-
 
 
 
