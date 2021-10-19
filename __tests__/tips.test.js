@@ -44,27 +44,27 @@ describe('slack-bot tip routes', () => {
       .then((res) => {
         expect(res.body).toEqual([{
           tip: expect.any(String),
-          tipUrl: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.any(String),
+          tipUrl: expect.toBeNullOrString(),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
@@ -74,6 +74,17 @@ describe('slack-bot tip routes', () => {
           timesViewed: expect.any(Number),
         }]);
       });
+      
+  });
+  it('should update the times viewed on a tip', async () => {
+    return await request(app).patch('/api/v1/tips/1').send({}).then(res => {
+      expect(res.body).toEqual({
+        tip: expect.any(String),
+        tipUrl: expect.toBeNullOrString(),
+        course: expect.any(String),
+        timesViewed: expect.any(Number),
+      });
+    });
   });
 
   afterAll(() => {
