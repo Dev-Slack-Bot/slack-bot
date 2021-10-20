@@ -37,6 +37,22 @@ describe('slack-bot routes', () => {
       });
   });
 
+  it('should get all favorites by userId', async () => {
+    await request(app).post('/api/v1/users').send(newUser);
+    await request(app).post('/api/v1/favorites').send(firstFavorite);
+    await request(app).post('/api/v1/favorites').send(secondFavorite);
+    await request(app).post('/api/v1/favorites').send(thirdFavorite);
+    return await request(app)
+      .get('/api/v1/favorites/newUser4321')
+      .then((res) => {
+        expect(res.body).toEqual([
+          { ...firstFavorite, id: expect.any(String) },
+          { ...secondFavorite, id: expect.any(String) },
+          { ...thirdFavorite, id: expect.any(String) },
+        ]);
+      });
+  });
+
   //delete
 
   afterAll(() => {

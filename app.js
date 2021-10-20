@@ -132,7 +132,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           await request.post('/api/v1/favorites/').send({ id: bodyId });
         } else if (validateUserId) {
           await request.post('/api/v1/favorites/').send({ id: bodyId });
-        }
+
         await say(choice);
       } else if (favoritedValue === '2') {
         await say(choice);
@@ -155,6 +155,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
+
             // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,
