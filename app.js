@@ -1,12 +1,8 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-// const request = require('superagent');
+const request = require('superagent');
 const Funny = require('./lib/models/Funny');
-// const favController = require('./lib/controllers/favorites');
-const User = require('./lib/models/User');
-// const userController = require('./lib/controllers/users');
-const Favorite = require('./lib/models/Favorite');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -138,6 +134,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           postFav;
         } else if (validateUserId) {
           postFav;
+
         }
         await say(choice);
       } else if (favoritedValue === '2') {
@@ -161,6 +158,8 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
+
+            // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,
           },
