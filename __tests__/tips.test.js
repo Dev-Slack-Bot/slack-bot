@@ -44,32 +44,32 @@ describe('slack-bot tip routes', () => {
       .then((res) => {
         expect(res.body).toEqual([{
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }]);
@@ -90,9 +90,7 @@ describe('slack-bot tip routes', () => {
   it('should update the times viewed on a tip', async () => {
     const views = await request(app).get('/api/v1/tips/1');
     const incrimentViews =  views.body.timesViewed + 1;
-    console.log('THISSSSOS', incrimentViews);
     return await request(app).patch('/api/v1/tips/1').send({ id:1, timesViewed:incrimentViews }).then(res => {
-      console.log(res.body);
       expect(res.body).toEqual({
         tip: expect.any(String),
         tipUrl: expect.any(String),
