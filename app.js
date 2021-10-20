@@ -1,5 +1,12 @@
+/* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
+// const request = require('superagent');
+const Funny = require('./lib/models/Funny');
+// const favController = require('./lib/controllers/favorites');
+const User = require('./lib/models/User');
+// const userController = require('./lib/controllers/users');
+const Favorite = require('./lib/models/Favorite');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -8,9 +15,7 @@ const app = new App({
   appToken: process.env.SCOPE_TOKEN 
 });
 
-app.message('hello', async ({ message, say }) => {
-  await say(`Hey there <@${message.user}>!`);
-  await say({
+ const choice = {
     blocks: [
       {
         'type': 'divider'
@@ -43,55 +48,126 @@ app.message('hello', async ({ message, say }) => {
         ]
       }
     ]
-  });
+  };
+
+
+app.message('hello', async ({ message, say }) => {
+  await say(`Hey there <@${message.user}>!`);
+  await say(choice);
 });
 
-// console.log user value
-// grab that value 
-// if (value 1 or 2) is choosen
-// await and generate pulled sql tip or funny (import random function body)
-
 app.action('button_click', async ({ body, ack, say }) => {
-  
   await ack();
-  console.log(body.actions[0].selected_option.value);
+  const randomFunnyJoke = await Funny.getData();
   const tipOrFunnyValue = body.actions[0].selected_option.value;
-
   if(tipOrFunnyValue === '1') {
-    // randomize the sql query to return choosen comment
-    // const randomEntree = Math.floor(Math.random() * .length);
+    
     await say({
-      'blocks': [
-        {
-          'type': 'divider'
-        },
-        {
-          'type': 'header',
-          'text': {
-            'type': 'plain_text',
-            'text': 'FUNNY DEV SLOGANS!',
-            'emoji': true
-          }
-        }
-      ]
+        'blocks': [
+            {
+                'type': 'header',
+                'text': {
+                    'type': 'plain_text',
+                    'text': 'FUNNY DEV SLOGANS!',
+                    'emoji': true
+                }
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'plain_text',
+                    'text': `"${randomFunnyJoke.entree}"`,
+                    'emoji': true
+                }
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'mrkdwn',
+                    'text': 'Would you like to favorite this?'
+                },
+                'accessory': {
+                    'type': 'static_select',
+                    'placeholder': {
+                        'type': 'plain_text',
+                        'text': 'favorite?',
+                        'emoji': true
+                    },
+                    'options': [
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': 'Yes',
+                                'emoji': true
+                            },
+                            'value': '1'
+                        },
+                        {
+                            'text': {
+                                'type': 'plain_text',
+                                'text': 'No',
+                                'emoji': true
+                            },
+                            'value': '2'
+                        }
+                    ],
+                    'action_id': 'static_select-action'
+                }
+            } 
+        ]
     });
 
+    // Favorite event value transmitted as POST route/model
+    // might need a 'user' in parameters to track favorites
+    // will need to stop after 5 rounds?
+    // restart the question process if less than 10
+    app.action('static_select-action', async ({ ack, body, say }) => {
+        await ack();
+        const favoritedValue = body.actions[0].selected_option.value;
+        const bodyId = body.user.id;
+        const userName = body.user.username;
+        const name = body.user.name;
+
+        if(favoritedValue === '1') {
+            const validateUserId = await User.findById(bodyId);
+            console.log('VALIDATED USER', validateUserId);
+            if(!validateUserId || null) {
+                const userData = await User.postUser(bodyId, userName, name);
+                console.log('userdata', userData);
+                await Favorite.postFavorite(userData.bodyId);
+                
+            } else if(validateUserId) {
+                 await Favorite.postFavorite(bodyId);
+            }          
+            await say(choice);
+        } else if(favoritedValue === '2') {
+            await say(choice);
+        }
+
+    });
+
+  // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if(tipOrFunnyValue === '2') {
 
     await say({
-      'blocks': [
-        {
-          'type': 'divider'
-        },
-        {
-          'type': 'header',
-          'text': {
-            'type': 'plain_text',
-            'text': 'DEV TIPS N TRICKS!',
-            'emoji': true
-          }
-        }
-      ]
+        'blocks': [
+            {
+                'type': 'header',
+                'text': {
+                    'type': 'plain_text',
+                    'text': 'DEV TIPS N TRICKS!',
+                    'emoji': true
+                }
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'plain_text',
+                    'text': '\'placeholder\' for Tips..',
+                    'emoji': true
+                }
+            }
+        ]
     });
   }
   
