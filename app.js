@@ -121,17 +121,20 @@ app.action('button_click', async ({ body, ack, say }) => {
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
+      const postFav = await Favorite.postFavorite(bodyId);
+      const userData = await User.postUser(bodyId, userName, name);
+      const validateUserId = await User.findById(bodyId);
 
       if (favoritedValue === '1') {
-        const validateUserId = await request.get(`/api/v1/users/${bodyId}`);
+        validateUserId;
 
-        if (!validateUserId) {
-          await request
-            .post('/api/v1/users/')
-            .send({ id: bodyId, username: userName, name });
-          await request.post('/api/v1/favorites/').send({ id: bodyId });
+        if (!validateUserId || null) {
+          userData;
+          // console.log('userdata', userData);
+          postFav;
         } else if (validateUserId) {
-          await request.post('/api/v1/favorites/').send({ id: bodyId });
+          postFav;
+
         }
         await say(choice);
       } else if (favoritedValue === '2') {
@@ -155,6 +158,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
+
             // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,
