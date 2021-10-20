@@ -22,13 +22,10 @@ describe('slack-bot routes', () => {
       });
   });
 
-<<<<<<< HEAD
-=======
-  it('should find a user by id', async () => {
-    await request(app)
-      .post('/api/v1/users')
-      .send(newUser);
-    return request(app).get('/api/v1/users/newUser4321')
+  it.skip('should find a user by id', async () => {
+    await request(app).post('/api/v1/users').send(newUser);
+    return request(app)
+      .get('/api/v1/users/newUser4321')
       .then((res) => {
         expect(res.body).toEqual({
           id: 'newUser4321',
@@ -38,7 +35,6 @@ describe('slack-bot routes', () => {
       });
   });
 
->>>>>>> 519c97b002972711f21552b33a6e7600b1c1ad57
   afterAll(() => {
     pool.end();
   });
