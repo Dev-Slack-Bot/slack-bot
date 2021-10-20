@@ -1,12 +1,8 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-// const request = require('superagent');
+const request = require('superagent');
 const Funny = require('./lib/models/Funny');
-// const favController = require('./lib/controllers/favorites');
-const User = require('./lib/models/User');
-// const userController = require('./lib/controllers/users');
-const Favorite = require('./lib/models/Favorite');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -120,32 +116,22 @@ app.action('button_click', async ({ body, ack, say }) => {
     // will need to stop after 5 rounds?
     // restart the question process if less than 10
     app.action('static_select-action', async ({ ack, body, say }) => {
-      
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
-      console.log('FAV VAL', favoritedValue);
-
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      console.log('userdata', bodyId, userName, name);
-      
+
       if (favoritedValue === '1') {
-        
-        const validateUserId = await User.findById(bodyId);
-        
+        const validateUserId = await request(app).get('/api/v1/users/:id');
+
         if (!validateUserId) {
-          await User.postUser(bodyId, userName, name);
-          
-          const fav = await Favorite.postFavorite(bodyId);
-          console.log(fav, 'FAV');
-          
+          await request(app).post('/api/v1/users').send(bodyId, userName, name);
+          await request(app).post('api/v1/favorites').send(bodyId);
         } else if (validateUserId) {
-          const fav = await Favorite.postFavorite(bodyId);
-          console.log(fav, 'FAV');
+          await request(app).post('api/v1/favorites').send(bodyId);
         }
         await say(choice);
-
       } else if (favoritedValue === '2') {
         await say(choice);
       }
