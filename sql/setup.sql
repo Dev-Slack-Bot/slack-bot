@@ -51,7 +51,7 @@ VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfrogg
   ('Dont forget your crabby hands! "<> </>" when making a component in react', 'https://reactjs.org/docs/react-component.html', '2', '4'), 
   ('Make sure you cd into your repo before you code .', 'https://www.codegrepper.com/code-examples/whatever/how+to+change+directory+in+mac+terminal', '1', '2'), 
   ('Breaks are important! Remember to get up and walk around!', 'https://www.health.harvard.edu/pain/the-dangers-of-sitting', '1', '1'),
-  ('Dont struggle for too long on your own, ask for help when you need it', null, '1', '0');
+  ('Dont struggle for too long on your own, ask for help when you need it', 'N/A', '1', '0');
 
 INSERT INTO funny (entree, course_id, times_viewed) VALUES 
 ('It is looking like you might need a HARD refresh', '2', 1),

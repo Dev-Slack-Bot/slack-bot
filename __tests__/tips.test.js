@@ -44,32 +44,32 @@ describe('slack-bot tip routes', () => {
       .then((res) => {
         expect(res.body).toEqual([{
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }, {
           tip: expect.any(String),
-          tipUrl: expect.toBeNullOrString(),
+          tipUrl: expect.any(String),
           course: expect.any(String),
           timesViewed: expect.any(Number),
         }]);
