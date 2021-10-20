@@ -37,7 +37,7 @@ describe('slack-bot routes', () => {
     return await request(app).patch('/api/v1/funnys/1').send({ id:1, timesViewed:incrimentViews }).then(res => {
       expect(res.body).toEqual({
         entree:expect.any(String),
-        course: expect.any(String),
+        courseId: expect.any(String),
         timesViewed: 2 });
     });
   });
