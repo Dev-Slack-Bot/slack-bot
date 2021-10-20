@@ -6,7 +6,7 @@ const app = require('../lib/app.js');
 describe('slack-bot routes', () => {
   beforeEach(() => {
     return setup(pool);
-  });
+  }); 
 
   it('should get a random funny entree with /GET', async () => {
     return await request(app)
