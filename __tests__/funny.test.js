@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool.js');
 const setup = require('../data/setup.js');
 const request = require('supertest');
 const app = require('../lib/app.js');
+// const appGLOBAL = require('./app.js');
 
 describe('slack-bot routes', () => {
   beforeEach(() => {
@@ -17,7 +18,7 @@ describe('slack-bot routes', () => {
           entree: expect.any(String),
           course_id: expect.any(String),
           times_viewed: expect.any(Number),
-        });
+        }); 
       });
   });
 
