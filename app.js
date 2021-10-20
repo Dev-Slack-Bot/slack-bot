@@ -1,12 +1,8 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-// const request = require('superagent');
+const request = require('superagent');
 const Funny = require('./lib/models/Funny');
-// const favController = require('./lib/controllers/favorites');
-const User = require('./lib/models/User');
-// const userController = require('./lib/controllers/users');
-const Favorite = require('./lib/models/Favorite');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -125,26 +121,23 @@ app.action('button_click', async ({ body, ack, say }) => {
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      const postFav = await Favorite.postFavorite(bodyId);
-      const userData = await User.postUser(bodyId, userName, name);
-      const validateUserId = await User.findById(bodyId);
 
       if (favoritedValue === '1') {
-        validateUserId;
+        const validateUserId = await request.get(`/api/v1/users/${bodyId}`);
 
-        if (!validateUserId || null) {
-          userData;
-          // console.log('userdata', userData);
-          postFav;
+        if (!validateUserId) {
+          await request
+            .post('/api/v1/users/')
+            .send({ id: bodyId, username: userName, name });
+          await request.post('/api/v1/favorites/').send({ id: bodyId });
         } else if (validateUserId) {
-          postFav;
-        }
+          await request.post('/api/v1/favorites/').send({ id: bodyId });
+
         await say(choice);
       } else if (favoritedValue === '2') {
         await say(choice);
       }
-    });
-
+  
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
     await say({
@@ -161,6 +154,8 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
+
+            // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,
           },

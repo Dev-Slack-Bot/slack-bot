@@ -30,9 +30,9 @@ describe('slack-bot routes', () => {
       .then((res) => {
         expect(res.body).toEqual({
           id: expect.any(String),
-          user_id: 'newUser4321',
-          tips_id: '1',
-          funny_id: null,
+          userId: 'newUser4321',
+          tipsId: '1',
+          funnyId: null,
         });
       });
   });
