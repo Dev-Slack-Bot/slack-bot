@@ -121,21 +121,18 @@ app.action('button_click', async ({ body, ack, say }) => {
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      const postFav = await Favorite.postFavorite(bodyId);
-      const userData = await User.postUser(bodyId, userName, name);
-      const validateUserId = await User.findById(bodyId);
 
       if (favoritedValue === '1') {
-        validateUserId;
+        const validateUserId = await request.get(`/api/v1/users/${bodyId}`);
 
-        if (!validateUserId || null) {
-          userData;
-          // console.log('userdata', userData);
-          postFav;
+        if (!validateUserId) {
+          await request
+            .post('/api/v1/users/')
+            .send({ id: bodyId, username: userName, name });
+          await request.post('/api/v1/favorites/').send({ id: bodyId });
         } else if (validateUserId) {
-          postFav;
+          await request.post('/api/v1/favorites/').send({ id: bodyId });
 
-        }
         await say(choice);
       } else if (favoritedValue === '2') {
         await say(choice);
