@@ -120,26 +120,30 @@ app.action('button_click', async ({ body, ack, say }) => {
     // will need to stop after 5 rounds?
     // restart the question process if less than 10
     app.action('static_select-action', async ({ ack, body, say }) => {
+
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
+      console.log('FAV VAL', favoritedValue);
+
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      const postFav = await Favorite.postFavorite(bodyId);
-      const userData = await User.postUser(bodyId, userName, name);
-      const validateUserId = await User.findById(bodyId);
-
+      console.log('userdata', bodyId, userName, name);
+      
       if (favoritedValue === '1') {
-        validateUserId;
-
-        if (!validateUserId || null) {
-          userData;
-          // console.log('userdata', userData);
-          postFav;
+        const validateUserId = await User.findById(bodyId);
+        
+        if (!validateUserId) {
+          await User.postUser(bodyId, userName, name);
+          const fav = await Favorite.postFavorite(bodyId);
+          console.log(fav, 'FAV');
+          
         } else if (validateUserId) {
-          postFav;
+          const fav = await Favorite.postFavorite(bodyId);
+          console.log(fav, 'FAV');
         }
         await say(choice);
+
       } else if (favoritedValue === '2') {
         await say(choice);
       }
@@ -161,6 +165,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
+            // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,
           },
