@@ -2,21 +2,22 @@ const pool = require('../lib/utils/pool.js');
 const setup = require('../data/setup.js');
 const request = require('supertest');
 const app = require('../lib/app.js');
+const newUser = require('../lib/utils/user-utils');
 
 describe('slack-bot routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
 
-  it('should get a random funny entree with /GET', async () => {
+  it('should post a user', async () => {
     return await request(app)
-      .get('/api/v1/funnys')
+      .post('/api/v1/users')
+      .send(newUser)
       .then((res) => {
         expect(res.body).toEqual({
-          id: expect.any(String),
-          entree: expect.any(String),
-          course_id: expect.any(String),
-          times_viewed: expect.any(Number),
+          id: 'newUser4321',
+          username: 'newbie',
+          name: 'newGuy',
         });
       });
   });
