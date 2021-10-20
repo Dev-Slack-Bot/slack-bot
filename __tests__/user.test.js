@@ -22,7 +22,7 @@ describe('slack-bot routes', () => {
       });
   });
 
-  it.skip('should find a user by id', async () => {
+  it('should find a user by id', async () => {
     await request(app).post('/api/v1/users').send(newUser);
     return request(app)
       .get('/api/v1/users/newUser4321')
