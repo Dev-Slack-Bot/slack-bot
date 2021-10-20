@@ -1,7 +1,12 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
+// const request = require('superagent');
 const Funny = require('./lib/models/Funny');
+// const favController = require('./lib/controllers/favorites');
+const User = require('./lib/models/User');
+// const userController = require('./lib/controllers/users');
+const Favorite = require('./lib/models/Favorite');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -119,15 +124,26 @@ app.action('button_click', async ({ body, ack, say }) => {
     app.action('static_select-action', async ({ ack, body, say }) => {
         await ack();
         const favoritedValue = body.actions[0].selected_option.value;
-        if(favoritedValue === '1') {
-            console.log('YES option has been selected');
-            
-            await say(choice);
+        const bodyId = body.user.id;
+        const userName = body.user.username;
+        const name = body.user.name;
 
+        if(favoritedValue === '1') {
+            const validateUserId = await User.findById(bodyId);
+            console.log('VALIDATED USER', validateUserId);
+            if(!validateUserId || null) {
+                const userData = await User.postUser(bodyId, userName, name);
+                console.log('userdata', userData);
+                await Favorite.postFavorite(userData.bodyId);
+                
+            } else if(validateUserId) {
+                 await Favorite.postFavorite(bodyId);
+            }          
+            await say(choice);
         } else if(favoritedValue === '2') {
-            console.log('NO option has been selected');
             await say(choice);
         }
+
     });
 
   // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
