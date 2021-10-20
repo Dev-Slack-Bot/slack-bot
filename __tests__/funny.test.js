@@ -22,6 +22,26 @@ describe('slack-bot routes', () => {
       });
   });
 
+  it('should get a funny quote by id', async () => {
+    return await request(app).get('/api/v1/funny/1').then(res => {
+      expect(res.body).toEqual({
+        entree:'It is looking like you might need a HARD refresh',
+        course: 'Foundations_2', 
+        timesViewed: 1 });
+    });
+  });
+
+  it('should update the times viewed on a funny quote', async () => {
+    const views = await request(app).get('/api/v1/funnys/1');
+    const incrimentViews =  views.body.timesViewed + 1;
+    return await request(app).patch('/api/v1/tips/1').send({ id:1, timesViewed:incrimentViews }).then(res => {
+      expect(res.body).toEqual({
+        entree:expect.any(String),
+        course: expect.any(String),
+        timesViewed: 2 });
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
