@@ -32,6 +32,7 @@ describe('slack-bot tip routes', () => {
         };
       } else {
         return {
+
           pass: false, 
         };
       }
