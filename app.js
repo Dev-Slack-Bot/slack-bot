@@ -133,11 +133,13 @@ app.action('button_click', async ({ body, ack, say }) => {
         } else if (validateUserId) {
           await request.post('/api/v1/favorites/').send({ id: bodyId });
 
-        await say(choice);
-      } else if (favoritedValue === '2') {
-        await say(choice);
+          await say(choice);
+        } else if (favoritedValue === '2') {
+          await say(choice);
+        }
       }
-  
+    });
+
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
     await say({
