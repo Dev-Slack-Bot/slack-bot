@@ -3,6 +3,7 @@ const { App } = require('@slack/bolt');
 require('dotenv').config();
 const request = require('superagent');
 const Funny = require('./lib/models/Funny');
+const controllerApp = require('./lib/app');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -123,13 +124,21 @@ app.action('button_click', async ({ body, ack, say }) => {
       const name = body.user.name;
 
       if (favoritedValue === '1') {
-        const validateUserId = await request(app).get('/api/v1/users/:id');
+        const validateUserId = await request({ controllerApp }).get(
+          '/api/v1/users/:id'
+        );
 
         if (!validateUserId) {
-          await request(app).post('/api/v1/users').send(bodyId, userName, name);
-          await request(app).post('api/v1/favorites').send(bodyId);
+          await request({ controllerApp })
+            .post('/api/v1/users/')
+            .send(bodyId, userName, name);
+          await request({ controllerApp })
+            .post('api/v1/favorites/')
+            .send(bodyId);
         } else if (validateUserId) {
-          await request(app).post('api/v1/favorites').send(bodyId);
+          await request({ controllerApp })
+            .post('api/v1/favorites/')
+            .send(bodyId);
         }
         await say(choice);
       } else if (favoritedValue === '2') {
