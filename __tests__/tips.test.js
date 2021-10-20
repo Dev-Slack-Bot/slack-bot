@@ -82,14 +82,17 @@ describe('slack-bot tip routes', () => {
       expect(res.body).toEqual({
         tip: 'For help pracicing CSS flex, try Flexboxfroggy!', 
         tipUrl: 'https://flexboxfroggy.com/', 
-        courseId: 1, 
-        timesViewed: '3' });
+        course: 'Foundations_1', 
+        timesViewed: 3 });
     });
   });
   
   it('should update the times viewed on a tip', async () => {
     const views = await request(app).get('/api/v1/tips/1');
-    return await request(app).patch('/api/v1/tips/1').send({ id:1, timesViewed: views + 1 }).then(res => {
+    const incrimentViews =  views.body.timesViewed + 1;
+    console.log('THISSSSOS', incrimentViews);
+    return await request(app).patch('/api/v1/tips/1').send({ id:1, timesViewed:incrimentViews }).then(res => {
+      console.log(res.body);
       expect(res.body).toEqual({
         tip: expect.any(String),
         tipUrl: expect.any(String),
