@@ -1,6 +1,5 @@
 
 # Slack-Cat 1.0.0
-//screenshots of slack interaction
 
 # ABOUT THE DEV TEAM 
  ## Triana Cerda
