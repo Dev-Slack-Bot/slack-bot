@@ -2,7 +2,7 @@
 # Slack-Cat 1.0.0
 //screenshots of slack interaction
 
-# DEV TEAM: 
+# ABOUT THE DEV TEAM 
  ## Triana Cerda
  - LinkedIn: https://www.linkedin.com/in/triana-cerda/
  - GitHub: https://github.com/trianacerda
@@ -15,12 +15,11 @@
  ## Aemilius Morgan
  - LinkedIn: https://www.linkedin.com/in/aemilius-morgan-1b0172171/
  - GitHub: https://github.com/AemiliusM
+
+
 ![Screen Shot 2021-10-21 at 2 39 29 PM](https://user-images.githubusercontent.com/80484840/138360760-25c51f72-32cf-4788-b0ab-0309619c8aa4.png)
 
 
-
-
-![Screen Shot 2021-10-21 at 2 32 02 PM](https://user-images.githubusercontent.com/80484840/138360492-d2c04129-7a25-4b3c-94aa-9b5375d25e21.png)
 
 # DESCRIPTION
 Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can save the funny or tip of your choice to a favorites table! You can ask the bot to take a look at all your favorites later or delete it if you're done with it! Slack-Cat was built for enjoymeny, hop in a say 'Hello' to our bot!
