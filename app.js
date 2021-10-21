@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-const request = require('superagent');
+// const request = require('superagent');
+const fetch = require('cross-fetch');
 const Funny = require('./lib/models/Funny');
 
 const app = new App({
@@ -123,18 +124,47 @@ app.action('button_click', async ({ body, ack, say }) => {
       const name = body.user.name;
 
       if (favoritedValue === '1') {
-        const validateUserId = await request.get(`/api/v1/users/${bodyId}`);
-
+        const validateUserId = await fetch(
+          `${process.env.BACKEND_URL}/users/${bodyId}`
+        ); // cleared
+        console.log(validateUserId, 'USER POSTED VALIDATE');
         if (!validateUserId) {
-          await request
-            .post('/api/v1/users/')
-            .send({ id: bodyId, username: userName, name });
-          await request.post('/api/v1/favorites/').send({ id: bodyId });
-        } else if (validateUserId) {
-          await request.post('/api/v1/favorites/').send({ id: bodyId });
+          await fetch(`${process.env.BACKEND_URL}/users`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              id: bodyId,
+              username: userName,
+              name,
+            }),
+          });
 
-          await say(choice);
-        } else if (favoritedValue === '2') {
+          // const url = `${process.env.BACKEND_URL}/favorites`;
+          await fetch(`${process.env.BACKEND_URL}/favorites`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              id: bodyId,
+            }),
+          });
+        } else if (validateUserId) {
+          await fetch(`${process.env.BACKEND_URL}/favorites`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify({
+              userId: bodyId,
+            }),
+          }); // cleared
+
           await say(choice);
         }
       }
@@ -156,7 +186,6 @@ app.action('button_click', async ({ body, ack, say }) => {
           type: 'section',
           text: {
             type: 'plain_text',
-
             // eslint-disable-next-line quotes
             text: "'placeholder' for Tips..",
             emoji: true,

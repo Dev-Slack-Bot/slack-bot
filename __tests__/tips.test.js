@@ -32,7 +32,10 @@ describe('slack-bot tip routes', () => {
         };
       } else {
         return {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5295a50f452586eee3d539f6554885152b8013df
           pass: false, 
         };
       }

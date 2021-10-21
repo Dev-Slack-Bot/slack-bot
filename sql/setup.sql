@@ -71,6 +71,14 @@ INSERT INTO users (id, username, name) VALUES
 ('AEMILIUS1234', 'aemiliusM', 'aemilius'),
 ('SIMON1234', 'simonk', 'simon');
 
+INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
+('TRIANA1234', null, '3'),
+('TRIANA1234', null, '8'),
+('AEMILIUS1234', '4', null),
+('AEMILIUS1234', null, '2'),
+('SIMON1234', null, '5'),
+('SIMON1234', '1', null),
+('SIMON1234', null, '10')
 
 INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
 ('TRIANA1234', null, '3'),
