@@ -18,7 +18,7 @@ Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can
 ## favicon
 - https://www.teepublic.com/magnet/3685584-cat-coughing-like-a-kid-meme
 
-##dev slogans
+## dev slogans
 - https://betterprogramming.pub/101-funny-programmer-quotes-76c7f335b92d
 
 
