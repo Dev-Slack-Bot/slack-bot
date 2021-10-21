@@ -3,12 +3,21 @@
 //screenshots of slack interaction
 
 ## DEV TEAM: 
- - Triana Cerda-- https://www.linkedin.com/in/triana-cerda/
- - Simon Kaine-- https://www.linkedin.com/in/simonbishopkaine/
- - Aemilius Morgan-- https://www.linkedin.com/in/aemilius-morgan-1b0172171/
+ # Triana Cerda
+ - LinkedIn: https://www.linkedin.com/in/triana-cerda/
+ - GitHub: https://github.com/trianacerda
+ 
+ # Simon Kaine
+ - LinkedIn: https://www.linkedin.com/in/simonbishopkaine/
+ - GitHub: https://github.com/simonkaine
 
 
-In a 5 day sprint our team brainstormed, planned, and delivered a mobile friendly Brewlette app. Working remotely, the team utilized multiple tools to stay connected and openly communicate on project plans. Our team utilized highly practiced and desired frameworks, libraries, etc. to create an easy fun app that randomly finds you a place to drink. 
+ # Aemilius Morgan
+ - LinkedIn: https://www.linkedin.com/in/aemilius-morgan-1b0172171/
+ - GitHub: https://github.com/AemiliusM
+
+
+![Screen Shot 2021-10-21 at 2 32 02 PM](https://user-images.githubusercontent.com/80484840/138360492-d2c04129-7a25-4b3c-94aa-9b5375d25e21.png)
 
 # DESCRIPTION
 Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can save the funny or tip of your choice to a favorites table! You can ask the bot to take a look at all your favorites later or delete it if you're done with it! Slack-Cat was built for enjoymeny, hop in a say 'Hello' to our bot!
