@@ -6,10 +6,16 @@
  ## Triana Cerda
  - LinkedIn: https://www.linkedin.com/in/triana-cerda/
  - GitHub: https://github.com/trianacerda
- 
+
+
+ ![Screen Shot 2021-10-21 at 2 42 30 PM](https://user-images.githubusercontent.com/80484840/138361106-80fbf4e2-bae1-4205-ae74-17ed733078dd.png)
+
  ## Simon Kaine
  - LinkedIn: https://www.linkedin.com/in/simonbishopkaine/
  - GitHub: https://github.com/simonkaine
+
+
+![Screen Shot 2021-10-21 at 2 41 52 PM](https://user-images.githubusercontent.com/80484840/138361061-16b5087c-73bc-4a23-bae2-4918588bdf13.png)
 
 
  ## Aemilius Morgan
