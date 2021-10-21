@@ -4,6 +4,8 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 const Funny = require('./lib/models/Funny');
 
+
+
 async function getUtil(bodyId) {
   const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
   const results = await res.json();
@@ -167,62 +169,42 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
-      console.log('USER OBJ', body.user);
-
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
+
+      // run our post route which will also check to see if user is in db
+      // that post route should return a user whether its created or already exists
+      // POST FAVS with user
+      if(favoritedValue === 'yes') {
+        await fetch(`${process.env.BACKEND_URL}/users`, { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          }, 
+          body: JSON.stringify({
+            id: bodyId, username: userName, name
+          })
+        });
+  
+        await fetch(`${process.env.BACKEND_URL}/favorites`, { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          }, 
+          body: JSON.stringify({
+            userId: bodyId
+          })
+        }); 
+        await say(choice);
+      }
+      
+      
+
       // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
 
-      if (favoritedValue === 'yes') {
-
-        const rawUserResponse = await fetch(`${process.env.BACKEND_URL}/users/${bodyId}`); // cleared
-        console.log('RAW RES', rawUserResponse );
-        const validateUserId = rawUserResponse;
-        console.log('USER POSTED VALIDATE', validateUserId);
-
-        if (validateUserId) {
-          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
-            body: JSON.stringify({
-              userId: bodyId
-            })
-          }); // cleared
-
-        await say(choice);
-        } else if (validateUserId === null) {
-          console.log(' WE MAKE IT!'); //U02JKAVFF96
-          await fetch(`${process.env.BACKEND_URL}/users`, { 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
-            body: JSON.stringify({
-              id: bodyId, username: userName, name
-            })
-          });
-         
-          // const url = `${process.env.BACKEND_URL}/favorites`;
-          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
-            body: JSON.stringify({
-              userId: bodyId
-            })
-          }); // cleared
-
-        await say(choice);
-        
-        }
-      }
 
       // if (favoritedValue === 'seeFavs') {
       //   getUtil(bodyId);
