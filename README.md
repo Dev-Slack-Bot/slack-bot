@@ -2,19 +2,22 @@
 # Slack-Cat 1.0.0
 //screenshots of slack interaction
 
-## DEV TEAM: 
- # Triana Cerda
+# DEV TEAM: 
+ ## Triana Cerda
  - LinkedIn: https://www.linkedin.com/in/triana-cerda/
  - GitHub: https://github.com/trianacerda
  
- # Simon Kaine
+ ## Simon Kaine
  - LinkedIn: https://www.linkedin.com/in/simonbishopkaine/
  - GitHub: https://github.com/simonkaine
 
 
- # Aemilius Morgan
+ ## Aemilius Morgan
  - LinkedIn: https://www.linkedin.com/in/aemilius-morgan-1b0172171/
  - GitHub: https://github.com/AemiliusM
+![Screen Shot 2021-10-21 at 2 39 29 PM](https://user-images.githubusercontent.com/80484840/138360760-25c51f72-32cf-4788-b0ab-0309619c8aa4.png)
+
+
 
 
 ![Screen Shot 2021-10-21 at 2 32 02 PM](https://user-images.githubusercontent.com/80484840/138360492-d2c04129-7a25-4b3c-94aa-9b5375d25e21.png)
