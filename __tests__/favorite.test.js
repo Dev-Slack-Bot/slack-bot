@@ -53,7 +53,7 @@ describe('slack-bot routes', () => {
       });
   });
 
-  it('should delete all favorites by userId', async () => {
+  it('should delete favorites by favId', async () => {
     await request(app).post('/api/v1/users').send(newUser);
     await request(app).post('/api/v1/favorites').send(firstFavorite);
     await request(app).post('/api/v1/favorites').send(secondFavorite);
