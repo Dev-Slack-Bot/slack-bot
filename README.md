@@ -16,129 +16,53 @@ Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can
 
 # REFERENCES
 ## favicon
-- https://miro.com/app/board/o9J_lqLxXZI=/?moveToWidget=3074457365819566132&cot=14
+- https://www.teepublic.com/magnet/3685584-cat-coughing-like-a-kid-meme
 
 
 
 # DATABASE TABLES
-![Screen Shot 2021-09-02 at 11 15 38 AM](https://user-images.githubusercontent.com/80484840/131895928-64e81a21-60fa-42a0-a7fa-b43420985931.png)
 
+![Screen Shot 2021-10-21 at 9 35 37 AM](https://user-images.githubusercontent.com/80484840/138320228-b17d591f-0c1d-4f84-a07a-24a966fcfdbe.png)
+![Screen Shot 2021-10-21 at 9 36 01 AM](https://user-images.githubusercontent.com/80484840/138320239-903ac86f-cc76-4d62-80e5-178955760a99.png)
 
 
 # TECH STACK
 
-| FRAMEWORKS | LIBRARIES             | LANGUAGES  | TESTING    | DATABASES  | TOOLS          |
-|------------|-----------------------|------------|------------|------------|----------------|
-| ReactJS    | Node.js               | JavaScript | Jest Suite | PostgreSQL | VS Code        |
-|            | Node-fetch            | CSS        | TDD        |            | Heroku         |
-|            | React-router-dom      |            | CI         |            | Netlify        |
-|            | React-custom-roulette |            |            |            | Miro           |
-|            | Express               |            |            |            | Postman        |
-|            |                       |            |            |            | Thunder Client |
-|            |                       |            |            |            | BeeKeeper      |
-|            |                       |            |            |            | Coolors        |
-|            |                       |            |            |            | InkScape       |
-|            |                       |            |            |            | Git            |
-|            |                       |            |            |            | GitHub         |
-|            |                       |            |            |            | Slack          |
-
-<!-- ## Frameworks
-- ReactJS
-
-## Libraries
-- Node.js
-- Node-fetch 
-- React-router-dom 
-- React-custom-roulette
-- Express 
-
-## Languages
-- JavaScript 
-- CSS 
-
-## Testing
-- Jest Suite 
-- TDD
-- CI 
-
-## Databases
-- PostgreSQL
-
-## Tools
-- VS Code
-- Heroku
-- Netlify
-- Miro 
-- Postman
-- Thunder Client
-- BeeKeeper
-- Coolors 
-- InkScape
-- Git 
-- GitHub 
-- Slack
-- Zoom -->
-
+| LIBRARIES             | LANGUAGES  | TESTING    | DATABASES  | TOOLS          |
+|-----------------------|------------|------------|------------|----------------|
+| Node.js               | JavaScript | Jest Suite | PostgreSQL | VS Code        |
+| Cross-fetch           |            | TDD        |            | Heroku         |
+| Slack/bolt            |            | CI         |            | Miro           |
+| Superagent            |            |            |            | BeeKeeper      |
+| Express               |            |            |            | Postman        |
+|                       |            |            |            | Git            |
+|                       |            |            |            | GitHub         |
+|                       |            |            |            | Slack          |
 
 # GROUP AGREEMENTS
-- majority rules with tough decisions
-- if you have nothing nice to say, don't say it
-- address things as soon as you can, don't let it linger
-- be constructive as much as possible
-- if you disagree, be ready to explain
-- be open minded and suggestions/openly communicate
-- intuitive breaks: annouce to group *DONT GO PAST 2 HOURS*
-- min 15 minute breaks/ take them as YOU need them too
-- pair programming or more-- no need for solo work
-- don't struggle for more than 15 mins to maximize time
-- communicate about merges with smaller features, pull often with fresh code
-- 3 scrums daily: that's when you merge to main
-- good commits when ACP(P)
+Disagreements
+-Communicate
+-Be respectful
 
+Breaks
+-Break Hall Monitor--rotate daily
+-Minimum 10 breaks
 
-# SCHEDULE
+Merges/PR
+-3 approvals for main
+-2 approvals for dev
 
-## 9-915 SCRUM
-What is the objective for today?
-merge into MAIN (if needed)
-everyone pull MAIN
+Work outside of hours
+-Non discussed functions/code-- put in miro first/slack everyone
+-Communicate about everything!!
+-Jokes/slogans/comments for bot done on notepad
 
-## 1150-12 SCRUM
-quick check in
-set up for after lunch tasks
-merge final commits into DEV
-
-## 12-1 LUNCH
-
-## 545-6 REFLECTION
-merge into final commits into DEV || MAIN
-- Who is working on what EXACTLY after hours?
-- One thing that went well today?
-- One thing we would like to improve on?
-- One thing to continue for tomorrow?
-- One thing we learned today?
-
-
-# DEPLOYABLE EXPECTATIONS
-- end points for the back to grab API info
-- working buttons that use token to access
-- LS working and utilized 
-- working roulette wheel
-- mobile friendly 
-- smooth pagination 
-- clean code 
-
-# STRETCH
-- Distance drop down
-- Different themes for accessibility
-- Ratings
-- Favorites/History
-- Places you've been
-- Thumbs up or thumbs down saved to your account
-- Exclude places I've been
+MVP for presentation
+-Slack bot response from user input
 
 
 # NOTES
 
+![Screen Shot 2021-10-21 at 9 51 13 AM](https://user-images.githubusercontent.com/80484840/138322368-61ee03ff-bd73-4f79-bced-16d995158329.png)
 
 
