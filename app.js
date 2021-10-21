@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-const request = require('superagent');
+// const request = require('superagent');
+const fetch = require('cross-fetch');
 const Funny = require('./lib/models/Funny');
 
 const app = new App({
@@ -124,27 +125,54 @@ app.action('button_click', async ({ body, ack, say }) => {
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      console.log('userdata', bodyId, userName, name);
-      
-      if (favoritedValue === '1') {
-        const validateUserId = await User.findById(bodyId);
-        
-        if (!validateUserId) {
-          await User.postUser(bodyId, userName, name);
-          const fav = await Favorite.postFavorite(bodyId);
-          console.log(fav, 'FAV');
-          
-        } else if (validateUserId) {
-          postFav;
 
-        }
+      if (favoritedValue === '1') {
+        const validateUserId = await fetch(`${process.env.BACKEND_URL}/users/${bodyId}`); // cleared
+        console.log(validateUserId, 'USER POSTED VALIDATE');
+        if (!validateUserId) {
+          await fetch(`${process.env.BACKEND_URL}/users`, { 
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            }, 
+            body: JSON.stringify({
+              id: bodyId, username: userName, name
+            })
+          });
+         
+          // const url = `${process.env.BACKEND_URL}/favorites`;
+          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            }, 
+            body: JSON.stringify({
+              id: bodyId
+            })
+          });
+
+        } else if (validateUserId) {
+          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            }, 
+            body: JSON.stringify({
+              userId: bodyId
+            })
+          }); // cleared
+
         await say(choice);
 
       } else if (favoritedValue === '2') {
         await say(choice);
       }
-    });
-
+    }
+  });
+  
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
     await say({

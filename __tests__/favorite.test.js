@@ -37,7 +37,6 @@ describe('slack-bot routes', () => {
       });
   });
 
-
   it('should get all favorites by userId', async () => {
     await request(app).post('/api/v1/users').send(newUser);
     await request(app).post('/api/v1/favorites').send(firstFavorite);
