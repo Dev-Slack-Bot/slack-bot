@@ -61,7 +61,7 @@ VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfrogg
  ('When testing you can expect all sorts of data to come back', 'https://jestjs.io/docs/expect', '2', 0), 
  ('VsCode has loads of extentions check them out to see what they can do for you!', 'https://code.visualstudio.com/docs/editor/extension-marketplace', '2', 0),
  ('Always test your code, it is part of writing clean code', 'https://levelup.gitconnected.com/javascript-clean-code-test-driven-development-91c48687fb5e', '2', 0),
- ('Try psudocoding out what you want to do in plain written language before coding', '', '1', 0),
+ ('Try psudocoding out what you want to do in plain written language before coding', 'https://www.khanacademy.org/computing/computer-programming/programming/good-practices/pt/planning-with-pseudo-code', '1', 0),
  ('TCP can be frustrating, but here is a little help', 'https://www.section.io/engineering-education/tcp-node/', '3',0 ),
  ('Read up on middleware, it is important to understand what it can do in express', 'https://expressjs.com/en/guide/using-middleware.html', '3',0 ),
  ('console.log() and your terminal are your best friends when debugging. Always read the error and where it is from.', 'https://developer.mozilla.org/en-US/docs/Web/API/Console/log', '1', 0),
