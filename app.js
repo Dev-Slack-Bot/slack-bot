@@ -168,6 +168,8 @@ app.action('button_click', async ({ body, ack, say }) => {
     app.action('static_select-action', async ({ ack, body, say }) => {
       
       await ack();
+      const randomFunnyJoke = await Funny.getData();
+      console.log(' RANDO FUNNY ', randomFunnyJoke.id);
       const favoritedValue = body.actions[0].selected_option.value;
       const bodyId = body.user.id;
       const userName = body.user.username;
@@ -188,16 +190,20 @@ app.action('button_click', async ({ body, ack, say }) => {
           })
         });
   
-        await fetch(`${process.env.BACKEND_URL}/favorites`, { 
+        const postFav = await fetch(`${process.env.BACKEND_URL}/favorites`, { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
           }, 
           body: JSON.stringify({
-            userId: bodyId
+            userId: bodyId, 
+            tipsId: null, 
+            funnyId: `${randomFunnyJoke.id}`
+
           })
         }); 
+        console.log('FAV POST', postFav);
         await say(choice);
       }
       
