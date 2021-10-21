@@ -117,7 +117,7 @@ app.action('button_click', async ({ body, ack, say }) => {
     // will need to stop after 5 rounds?
     // restart the question process if less than 10
     app.action('static_select-action', async ({ ack, body, say }) => {
-
+      
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
       console.log('FAV VAL', favoritedValue);
@@ -166,13 +166,11 @@ app.action('button_click', async ({ body, ack, say }) => {
           }); // cleared
 
         await say(choice);
-
-      } else if (favoritedValue === '2') {
-        await say(choice);
+        }
       }
-    }
-  });
-  
+    });
+      
+
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
     await say({
