@@ -120,7 +120,6 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
-      console.log('FAV VAL', favoritedValue);
 
       const bodyId = body.user.id;
       const userName = body.user.username;
@@ -128,7 +127,6 @@ app.action('button_click', async ({ body, ack, say }) => {
 
       if (favoritedValue === '1') {
         const validateUserId = await fetch(`${process.env.BACKEND_URL}/users/${bodyId}`); // cleared
-        console.log(validateUserId, 'USER POSTED VALIDATE');
         if (!validateUserId) {
           await fetch(`${process.env.BACKEND_URL}/users`, { 
             method: 'POST',
