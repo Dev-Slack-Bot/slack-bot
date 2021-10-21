@@ -59,13 +59,9 @@ describe('slack-bot routes', () => {
     await request(app).post('/api/v1/favorites').send(secondFavorite);
     await request(app).post('/api/v1/favorites').send(thirdFavorite);
     return await request(app)
-      .delete('/api/v1/favorites/newUser4321')
+      .delete('/api/v1/favorites/9')
       .then((res) => {
-        expect(res.body).toEqual([
-          { ...firstFavorite, id: expect.any(String) },
-          { ...secondFavorite, id: expect.any(String) },
-          { ...thirdFavorite, id: expect.any(String) },
-        ]);
+        expect(res.body).toEqual({ ...secondFavorite, id: expect.any(String) });
       });
   });
 
