@@ -217,8 +217,11 @@ app.action('button_click', async ({ body, ack, say }) => {
             body: JSON.stringify({
               userId: bodyId
             })
-          });
-        } 
+          }); // cleared
+
+        await say(choice);
+        
+        }
       }
 
       // if (favoritedValue === 'seeFavs') {
