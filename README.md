@@ -22,6 +22,7 @@ Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can
 - https://betterprogramming.pub/101-funny-programmer-quotes-76c7f335b92d
 - https://upjoke.com/html-jokes
 - https://digitalsynopsis.com/design/34-css-puns-web-design-funny-jokes/
+- https://elijahmanor.com/blog/front-end-web-dev-jokes
 
 
 
