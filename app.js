@@ -207,10 +207,7 @@ app.action('button_click', async ({ body, ack, say }) => {
         await say(choice);
       }
       
-      
-
       // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
-
 
       // if (favoritedValue === 'seeFavs') {
       //   getUtil(bodyId);
