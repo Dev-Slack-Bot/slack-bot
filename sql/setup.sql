@@ -42,6 +42,8 @@ CREATE TABLE favorite (
     FOREIGN KEY (funny_id) REFERENCES funny(id) ON DELETE CASCADE
 );
 
+-- Dont forget your crabby hands! "<> </>
+-- There is no Ctrl-Z in life.
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
 INSERT INTO tips (tip, tip_url, course_id, times_viewed) VALUES 

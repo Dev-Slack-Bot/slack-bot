@@ -4,12 +4,6 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 const Funny = require('./lib/models/Funny');
 
-// async function getUtil(bodyId) {
-//   const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
-//   const results = await res.json();
-//   return results;
-// }
-
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -17,7 +11,6 @@ const app = new App({
   appToken: process.env.SCOPE_TOKEN,
 });
 
-// ----------------------------- Global variable for main questions category
 const choice = {
   blocks: [
     {
@@ -53,7 +46,6 @@ const choice = {
   ],
 };
 
-// ----------------------------------------------- Initializes Favs bot/list
 app.message('favorites', async ({ say }) => {
   await say({
     blocks: [
@@ -95,13 +87,11 @@ app.message('favorites', async ({ say }) => {
   });
 });
 
-// ----------------------------------------------- Initializes Slack bot
 app.message('hello', async ({ message, say }) => {
   await say(`Hey there <@${message.user}>!`);
   await say(choice);
 });
 
-// ----------------------------------------------- 'hello' action event
 app.action('button_click', async ({ body, ack, say }) => {
   await ack();
   const randomFunnyJoke = await Funny.getData();
@@ -161,19 +151,15 @@ app.action('button_click', async ({ body, ack, say }) => {
         },
       ],
     });
-    // ------------------------------------nested action event for favorite choice
+
     app.action('static_select-action', async ({ ack, body, say }) => {
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
-      console.log('FAVID', body?.message?.blocks[2]?.accessory?.options[0]?.value);
       const favId = body?.message?.blocks[2]?.accessory?.options[0]?.value;
 
-      // run our post route which will also check to see if user is in db
-      // that post route should return a user whether its created or already exists
-      // POST FAVS with user
       if (favoritedValue !== 'no') {
         await fetch(`${process.env.BACKEND_URL}/users`, {
           method: 'POST',
@@ -188,7 +174,7 @@ app.action('button_click', async ({ body, ack, say }) => {
           }),
         });
 
-        const postFav = await fetch(`${process.env.BACKEND_URL}/favorites`, {
+        await fetch(`${process.env.BACKEND_URL}/favorites`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -196,69 +182,20 @@ app.action('button_click', async ({ body, ack, say }) => {
           },
           body: JSON.stringify({
             userId: bodyId,
-            // tipsId: null,
             funnyId: favId,
           }),
         });
         await say(choice);
       }
 
-      // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
-
       if (favoritedValue === 'seeFavs') {
-        // need to access an array of favorited jokes now based off that getUtil function,
-        // then loop thru each favorited item.
-        // const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
-
-        // ----------------------- USE THIS ONE BELOW INSTEAD
         const res = await fetch(
           `${process.env.BACKEND_URL}/favorites/${bodyId}`
         );
         const favoritesByUserId = await res.json();
-        console.log('RES JSON?!?!', favoritesByUserId);
         return favoritesByUserId;
-
-        // const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`, {
-        //   method: 'GET',
-        //   headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json',
-        //   },
-        // });
-
-        //   return await res.json();
       }
-      //   let array1 = [];
-      //   await array1.forEach((randomFunnyJoke) =>
-      //     say({
-      //       blocks: [
-      //         {
-      //           type: 'section',
-      //           text: {
-      //             type: 'mrkdwn',
-      //             text: 'Click to delete from your favs list !',
-      //           },
-      //           accessory: {
-      //             type: 'radio_buttons',
-      //             options: [
-      //               {
-      //                 text: {
-      //                   type: 'plain_text',
-      //                   text: `${randomFunnyJoke.entree}`, // req.body.fav?
-      //                   emoji: true,
-      //                 },
-      //                 value: `${randomFunnyJoke.entree}`, // if radio button value = favId, DELETE.
-      //               },
-      //             ],
-      //             action_id: 'radio_buttons-action',
-      //           },
-      //         },
-      //       ],
-      //     })
-      //   );
     });
-
-    // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === 'tip') {
     await say({
       blocks: [
