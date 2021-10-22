@@ -55,16 +55,16 @@ VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfrogg
   ('Dont struggle for too long on your own, ask for help when you need it', 'N/A', '1', '0');
 
 INSERT INTO funny (entree, course_id, times_viewed) VALUES 
-('It is looking like you might need a HARD refresh', '2', 1),
-('comments from canvas--CI not passing', '2', 1),
+('It is looking like you might need a HARD refresh', '2', 0),
+('comments from canvas--CI not passing', '2', 0),
 ('remember that one time Dan was a on a "roll" in the Role Model........', '3', 0 ),
-('you forget to ACP.....P(heroku for life)', '2', 1),
-('find s any s hidden s Ss today s?', '2', 1),
-('Play now, code later', '1', 1),
+('you forget to ACP.....P(heroku for life)', '2', 0),
+('find s any s hidden s Ss today s?', '2', 0),
+('Play now, code later', '1', 0),
 ('you will need this...trust the process', '1', 0),
-('you got this!! byId', '2', 1),
-('it is probably on that half line...ya know, 34 and half', '1', 1),
-('I can see your mouth moving but I think you are muted', '1', 1);
+('you got this!! byId', '2', 0),
+('it is probably on that half line...ya know, 34 and half', '1', 0),
+('I can see your mouth moving but I think you are muted', '1', 0);
 
 INSERT INTO users (id, username, name) VALUES
 ('TRIANA1234', 'trianac', 'triana'),
@@ -80,11 +80,3 @@ INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
 ('SIMON1234', '1', null),
 ('SIMON1234', null, '10')
 
-INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
-('TRIANA1234', null, '3'),
-('TRIANA1234', null, '8'),
-('AEMILIUS1234', '4', null),
-('AEMILIUS1234', null, '2'),
-('SIMON1234', null, '5'),
-('SIMON1234', '1', null),
-('SIMON1234', null, '10')

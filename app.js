@@ -143,15 +143,17 @@ app.action('button_click', async ({ body, ack, say }) => {
           });
 
           // const url = `${process.env.BACKEND_URL}/favorites`;
-          await fetch(`${process.env.BACKEND_URL}/favorites`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            body: JSON.stringify({
-              id: bodyId,
-            }),
+          fetchMethod(postUserfetchURL, 'POST', postUserJSONbody);
+
+          // await fetch(`${process.env.BACKEND_URL}/favorites`, {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //     Accept: 'application/json',
+          //   },
+          //   body: JSON.stringify({
+          //     id: bodyId,
+          //   }),
           });
         } else if (validateUserId) {
           await fetch(`${process.env.BACKEND_URL}/favorites`, {
