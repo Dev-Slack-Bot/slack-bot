@@ -16,7 +16,6 @@ CREATE TABLE tips (
     course_id BIGINT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
     times_viewed INT 
-
 );
 
 CREATE TABLE funny (
@@ -45,31 +44,30 @@ CREATE TABLE favorite (
 
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
-INSERT INTO tips (tip, tip_url, course_id, times_viewed) 
-
-VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfroggy.com/', '1', 3),
- ('Starting a new HTML doc? Try using html:5 at the start. Here is the Vscode link for html', 'https://code.visualstudio.com/docs/languages/html', '1', 1),
- ('Dont forget your crabby hands! "<> </>" when making a component in react', 'https://reactjs.org/docs/react-component.html', '2', 4), 
- ('Make sure you cd into your repo before you code .', 'https://www.codegrepper.com/code-examples/whatever/how+to+change+directory+in+mac+terminal', '1', 2), 
- ('Breaks are important! Remember to get up and walk around!', 'https://www.health.harvard.edu/pain/the-dangers-of-sitting', '1', 1),
- ('Dont struggle for too long on your own, ask for help when you need it', 'N/A', '1', 0), 
- ('Talk and listen to your team, dont be a Rupert','https://www.reddit.com/r/survivor/comments/ht1k84/rupert_bonehams_underground_shelter_is_a_disaster/', '1',0), 
- ('Remember to git add/commit/push often to incase of a needed revert/bug fix','https://www.youtube.com/watch?v=wrb7Gge9yoE', '1', 0), 
- ('Need a random number? Try Math.random()','https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random', '1',0), 
- ('git stash goes somewhere','https://git-scm.com/docs/git-stash', '1', 0), 
- ('Remember to add your secrets to your .yml file, github, and heroku','https://docs.github.com/en/actions/security-guides/encrypted-secrets', '3', 0), 
- ('Try using postman to check out your data-base', 'https://www.postman.com/', '2', 0), 
- ('When testing you can expect all sorts of data to come back', 'https://jestjs.io/docs/expect', '2', 0), 
- ('VsCode has loads of extentions check them out to see what they can do for you!', 'https://code.visualstudio.com/docs/editor/extension-marketplace', '2', 0),
- ('Always test your code, it is part of writing clean code', 'https://levelup.gitconnected.com/javascript-clean-code-test-driven-development-91c48687fb5e', '2', 0),
- ('Try psudocoding out what you want to do in plain written language before coding', 'https://www.khanacademy.org/computing/computer-programming/programming/good-practices/pt/planning-with-pseudo-code', '1', 0),
- ('TCP can be frustrating, but here is a little help', 'https://www.section.io/engineering-education/tcp-node/', '3',0 ),
- ('Read up on middleware, it is important to understand what it can do in express', 'https://expressjs.com/en/guide/using-middleware.html', '3',0 ),
- ('console.log() and your terminal are your best friends when debugging. Always read the error and where it is from.', 'https://developer.mozilla.org/en-US/docs/Web/API/Console/log', '1', 0),
- ('Need to get all the entries from an array? Use .map()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map', '1', 0),
- ('Need to add to the end of an array? Use .push()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push', '1', 0),
- ('Need to grab a copy of some data in an array? Use .slice()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice', '1', 0), 
- ('Here is a syntax sheet for SQL', 'https://www.sqltutorial.org/sql-cheat-sheet/', '2', 0)
+INSERT INTO tips (tip, tip_url, course_id, times_viewed) VALUES 
+('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfroggy.com/', '1', 3),
+('Starting a new HTML doc? Try using html:5 at the start. Here is the Vscode link for html', 'https://code.visualstudio.com/docs/languages/html', '1', 1),
+('Dont forget your crabby hands! "<> </>" when making a component in react', 'https://reactjs.org/docs/react-component.html', '2', 4), 
+('Make sure you cd into your repo before you code .', 'https://www.codegrepper.com/code-examples/whatever/how+to+change+directory+in+mac+terminal', '1', 2), 
+('Breaks are important! Remember to get up and walk around!', 'https://www.health.harvard.edu/pain/the-dangers-of-sitting', '1', 1),
+('Dont struggle for too long on your own, ask for help when you need it', 'N/A', '1', 0), 
+('Talk and listen to your team, dont be a Rupert','https://www.reddit.com/r/survivor/comments/ht1k84/rupert_bonehams_underground_shelter_is_a_disaster/', '1',0), 
+('Remember to git add/commit/push often to incase of a needed revert/bug fix','https://www.youtube.com/watch?v=wrb7Gge9yoE', '1', 0), 
+('Need a random number? Try Math.random()','https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random', '1',0), 
+('git stash goes somewhere','https://git-scm.com/docs/git-stash', '1', 0), 
+('Remember to add your secrets to your .yml file, github, and heroku','https://docs.github.com/en/actions/security-guides/encrypted-secrets', '3', 0), 
+('Try using postman to check out your data-base', 'https://www.postman.com/', '2', 0), 
+('When testing you can expect all sorts of data to come back', 'https://jestjs.io/docs/expect', '2', 0), 
+('VsCode has loads of extentions check them out to see what they can do for you!', 'https://code.visualstudio.com/docs/editor/extension-marketplace', '2', 0),
+('Always test your code, it is part of writing clean code', 'https://levelup.gitconnected.com/javascript-clean-code-test-driven-development-91c48687fb5e', '2', 0),
+('Try psudocoding out what you want to do in plain written language before coding', 'https://www.khanacademy.org/computing/computer-programming/programming/good-practices/pt/planning-with-pseudo-code', '1', 0),
+('TCP can be frustrating, but here is a little help', 'https://www.section.io/engineering-education/tcp-node/', '3',0 ),
+('Read up on middleware, it is important to understand what it can do in express', 'https://expressjs.com/en/guide/using-middleware.html', '3',0 ),
+('console.log() and your terminal are your best friends when debugging. Always read the error and where it is from.', 'https://developer.mozilla.org/en-US/docs/Web/API/Console/log', '1', 0),
+('Need to get all the entries from an array? Use .map()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map', '1', 0),
+('Need to add to the end of an array? Use .push()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push', '1', 0),
+('Need to grab a copy of some data in an array? Use .slice()', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice', '1', 0), 
+('Here is a syntax sheet for SQL', 'https://www.sqltutorial.org/sql-cheat-sheet/', '2', 0),
 ('Write small and re-usable functional components that would be looking cleaner and easier to read', 'https://intersog.com/blog/reactway/', '2', 0),
 ('When you write a code, always think about your team and people who will probably work with this code later.', 'https://intersog.com/blog/reactway/', '2', 0),
 ('Dont Use Props in Initial State', 'https://www.geeksforgeeks.org/7-react-best-practices-every-web-developer-should-follow/', '2', 0),
