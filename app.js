@@ -145,7 +145,7 @@ app.action('button_click', async ({ body, ack, say }) => {
                   text: 'Yes',
                   emoji: true,
                 },
-                value: 'yes',
+                value: randomFunnyJoke.id,
               },
               {
                 text: {
@@ -164,17 +164,17 @@ app.action('button_click', async ({ body, ack, say }) => {
     // ------------------------------------nested action event for favorite choice
     app.action('static_select-action', async ({ ack, body, say }) => {
       await ack();
-      const randomFunnyJoke = await Funny.getData();
-      console.log(' RANDO FUNNY ', randomFunnyJoke.id);
       const favoritedValue = body.actions[0].selected_option.value;
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
+      console.log('FAVID', body?.message?.blocks[2]?.accessory?.options[0]?.value);
+      const favId = body?.message?.blocks[2]?.accessory?.options[0]?.value;
 
       // run our post route which will also check to see if user is in db
       // that post route should return a user whether its created or already exists
       // POST FAVS with user
-      if (favoritedValue === 'yes') {
+      if (favoritedValue !== 'no') {
         await fetch(`${process.env.BACKEND_URL}/users`, {
           method: 'POST',
           headers: {
@@ -197,10 +197,9 @@ app.action('button_click', async ({ body, ack, say }) => {
           body: JSON.stringify({
             userId: bodyId,
             // tipsId: null,
-            funnyId: `${randomFunnyJoke.id}`,
+            funnyId: favId,
           }),
         });
-        console.log('FAV POST', postFav);
         await say(choice);
       }
 
