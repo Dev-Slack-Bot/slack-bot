@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 const { App } = require('@slack/bolt');
 require('dotenv').config();
-// const request = require('superagent');
 const fetch = require('cross-fetch');
 const Funny = require('./lib/models/Funny');
 
