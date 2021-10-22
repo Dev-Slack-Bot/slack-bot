@@ -6,11 +6,7 @@ const Funny = require('./lib/models/Funny');
 
 
 
-async function getUtil(bodyId) {
-  const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
-  const results = await res.json();
-  return results;
-}
+
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -211,10 +207,15 @@ app.action('button_click', async ({ body, ack, say }) => {
       // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
 
       if (favoritedValue === 'seeFavs') {
+        const userID = async function getUtil(bodyId) {
+          const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
+          const results = await res.json();
+          return results;
+        };
         // need to access an array of favorited jokes now based off that getUtil function,
         // then loop thru each favorited item. 
-        const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
-        console.log('RANDOM FUNNY JOKE', savedFavJoke);
+        
+        console.log('RANDOM FUNNY JOKE', userID);
       }
     
 
