@@ -222,8 +222,8 @@ app.action('button_click', async ({ body, ack, say }) => {
           },
         });
         
-        console.log('RES JSON?!?!', res.json());
-        return res.json();
+        console.log('RES JSON?!?!', await res.json());
+        return await res.json();
       }
     
 
