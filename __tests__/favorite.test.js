@@ -47,16 +47,15 @@ describe('slack-bot routes', () => {
       .then((res) => {
         expect(res.body).toEqual([
           {
-            id: '3',
+            id: null,
             userId: 'newUser4321',
-            tipsId: null,
-            funnyId: '3',
-            tip: null,
-            tipUrl: null,
-            courseId: '3',
-            timesViewed: 0,
-            entree:
-              'remember that one time Dan was a on a "roll" in the Role Model........',
+            tipsId: '1',
+            funnyId: null,
+            tip: 'For help pracicing CSS flex, try Flexboxfroggy!',
+            tipUrl: 'https://flexboxfroggy.com/',
+            courseId: null,
+            timesViewed: null,
+            entree: null,
           },
           {
             id: null,
@@ -70,15 +69,16 @@ describe('slack-bot routes', () => {
             entree: null,
           },
           {
-            id: null,
+            id: '3',
             userId: 'newUser4321',
-            tipsId: '1',
-            funnyId: null,
-            tip: 'For help pracicing CSS flex, try Flexboxfroggy!',
-            tipUrl: 'https://flexboxfroggy.com/',
-            courseId: null,
-            timesViewed: null,
-            entree: null,
+            tipsId: null,
+            funnyId: '3',
+            tip: null,
+            tipUrl: null,
+            courseId: '3',
+            timesViewed: 0,
+            entree:
+              'remember that one time Dan was a on a "roll" in the Role Model........',
           },
         ]);
       });
