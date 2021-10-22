@@ -45,7 +45,6 @@ CREATE TABLE favorite (
 
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
-
 INSERT INTO tips (tip, tip_url, course_id, times_viewed) 
 VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfroggy.com/', 1, '3'),
  ('Starting a new HTML doc? Try using html:5 at the start. Here is the Vscode link for html', 'https://code.visualstudio.com/docs/languages/html', '1', '1'),
@@ -71,7 +70,6 @@ INSERT INTO users (id, username, name) VALUES
 ('AEMILIUS1234', 'aemiliusM', 'aemilius'),
 ('SIMON1234', 'simonk', 'simon');
 
-
 INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
 ('TRIANA1234', null, '3'),
 ('TRIANA1234', null, '8'),
@@ -80,3 +78,4 @@ INSERT INTO favorite( user_id, tips_id, funny_id) VALUES
 ('SIMON1234', null, '5'),
 ('SIMON1234', '1', null),
 ('SIMON1234', null, '10')
+

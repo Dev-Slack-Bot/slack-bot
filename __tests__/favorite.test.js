@@ -24,7 +24,7 @@ describe('slack-bot routes', () => {
 
   it('should post a new favorite to userId after selected', async () => {
     await request(app).post('/api/v1/users').send(newUser);
-    return await request(app)
+    return await request(app) 
       .post('/api/v1/favorites')
       .send(firstFavorite)
       .then((res) => {
@@ -53,7 +53,17 @@ describe('slack-bot routes', () => {
       });
   });
 
-  //delete
+  it('should delete favorites by favId', async () => {
+    await request(app).post('/api/v1/users').send(newUser);
+    await request(app).post('/api/v1/favorites').send(firstFavorite);
+    await request(app).post('/api/v1/favorites').send(secondFavorite);
+    await request(app).post('/api/v1/favorites').send(thirdFavorite);
+    return await request(app)
+      .delete('/api/v1/favorites/9')
+      .then((res) => {
+        expect(res.body).toEqual({ ...secondFavorite, id: expect.any(String) });
+      });
+  });
 
   afterAll(() => {
     pool.end();
