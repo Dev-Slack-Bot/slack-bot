@@ -45,7 +45,6 @@ CREATE TABLE favorite (
 
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
-
 INSERT INTO tips (tip, tip_url, course_id, times_viewed) 
 VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfroggy.com/', 1, '3'),
  ('Starting a new HTML doc? Try using html:5 at the start. Here is the Vscode link for html', 'https://code.visualstudio.com/docs/languages/html', '1', '1'),

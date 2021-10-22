@@ -24,7 +24,7 @@ describe('slack-bot routes', () => {
 
   it('should post a new favorite to userId after selected', async () => {
     await request(app).post('/api/v1/users').send(newUser);
-    return await request(app)
+    return await request(app) 
       .post('/api/v1/favorites')
       .send(firstFavorite)
       .then((res) => {

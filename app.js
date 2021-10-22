@@ -117,8 +117,11 @@ app.action('button_click', async ({ body, ack, say }) => {
     // will need to stop after 5 rounds?
     // restart the question process if less than 10
     app.action('static_select-action', async ({ ack, body, say }) => {
+      
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
+      console.log('FAV VAL', favoritedValue);
+
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
@@ -168,9 +171,12 @@ app.action('button_click', async ({ body, ack, say }) => {
           }); // cleared
 
           await say(choice);
+
         }
       }
+
     });
+
 
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
@@ -201,5 +207,5 @@ app.action('button_click', async ({ body, ack, say }) => {
 (async () => {
   await app.start(process.env.PORT || 3000);
 
-  console.log('⚡️ Bolt app is running!');
+  console.log('⚡️ Bolt app is running!'); 
 })();

@@ -6,7 +6,7 @@ const newUser = require('../lib/utils/user-utils');
 
 describe('slack-bot routes', () => {
   beforeEach(() => {
-    return setup(pool);
+    return setup(pool); 
   });
 
   it('should post a user', async () => {
