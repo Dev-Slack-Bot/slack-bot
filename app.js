@@ -214,6 +214,11 @@ app.action('button_click', async ({ body, ack, say }) => {
         // need to access an array of favorited jokes now based off that getUtil function,
         // then loop thru each favorited item. 
         // const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
+        
+        // ----------------------- USE THIS ONE BELOW INSTEAD
+        // const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
+        // return await res.json();
+
         const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`, {
           method: 'GET',
           headers: {
