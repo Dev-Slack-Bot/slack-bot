@@ -120,17 +120,13 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
-      console.log('FAV VAL', favoritedValue);
-
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;
 
       if (favoritedValue === '1') {
-        const validateUserId = await fetch(
-          `${process.env.BACKEND_URL}/users/${bodyId}`
-        ); // cleared
-        console.log(validateUserId, 'USER POSTED VALIDATE');
+        const validateUserId = await fetch(`${process.env.BACKEND_URL}/users/${bodyId}`); // cleared
+
         if (!validateUserId) {
           await fetch(`${process.env.BACKEND_URL}/users`, {
             method: 'POST',
@@ -174,9 +170,8 @@ app.action('button_click', async ({ body, ack, say }) => {
 
         }
       }
-
     });
-
+      
 
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
