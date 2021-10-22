@@ -169,8 +169,9 @@ app.action('button_click', async ({ body, ack, say }) => {
         await say(choice);
         }
       }
+
     });
-      
+
 
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
   } else if (tipOrFunnyValue === '2') {
