@@ -175,6 +175,7 @@ app.action('button_click', async ({ body, ack, say }) => {
       const userName = body.user.username;
       const name = body.user.name;
 
+
       // run our post route which will also check to see if user is in db
       // that post route should return a user whether its created or already exists
       // POST FAVS with user
@@ -206,6 +207,7 @@ app.action('button_click', async ({ body, ack, say }) => {
         }); 
         console.log('FAV POST', postFav);
         await say(choice);
+
       }
       
       // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
@@ -291,5 +293,5 @@ app.action('button_click', async ({ body, ack, say }) => {
 (async () => {
   await app.start(process.env.PORT || 3000);
 
-  console.log('⚡️ Bolt app is running!');
+  console.log('⚡️ Bolt app is running!'); 
 })();
