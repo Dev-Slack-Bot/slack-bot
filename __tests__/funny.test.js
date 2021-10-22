@@ -3,8 +3,6 @@ const setup = require('../data/setup.js');
 const request = require('supertest');
 const app = require('../lib/app.js');
 
-// const appGLOBAL = require('./app.js');
-
 describe('slack-bot routes', () => {
   beforeEach(() => {
     return setup(pool);
