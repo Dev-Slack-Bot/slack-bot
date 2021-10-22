@@ -169,7 +169,7 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       await ack();
       const randomFunnyJoke = await Funny.getData();
-      console.log(' RANDO FUNNY ', randomFunnyJoke.id);
+      // console.log(' RANDO FUNNY ', randomFunnyJoke.id);
       const favoritedValue = body.actions[0].selected_option.value;
       const bodyId = body.user.id;
       const userName = body.user.username;
@@ -179,6 +179,7 @@ app.action('button_click', async ({ body, ack, say }) => {
       // that post route should return a user whether its created or already exists
       // POST FAVS with user
       if(favoritedValue === 'yes') {
+
         await fetch(`${process.env.BACKEND_URL}/users`, { 
           method: 'POST',
           headers: {
@@ -209,36 +210,41 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       // console.log(body.user.id, 'BODY USER ID FOR FAVS SELECT OPTION'); //U02JKAVFF96
 
-      // if (favoritedValue === 'seeFavs') {
-      //   getUtil(bodyId);
-      //   // need to access an array of favorited jokes now based off that getUntil function,
-      //   // then loop thru each favorited item. 
-      //   array1.forEach(favId => await say({
-      //     "blocks": [
-      //       {
-      //         "type": "section",
-      //         "text": {
-      //           "type": "mrkdwn",
-      //           "text": "Click to delete from your favs list !"
-      //         },
-      //         "accessory": {
-      //           "type": "radio_buttons",
-      //           "options": [
-      //             {
-      //               "text": {
-      //                 "type": "plain_text",
-      //                 "text": `${favId}`, // req.body.fav?
-      //                 "emoji": true
-      //               },
-      //               "value": `${favId}` // if radio button value = favId, DELETE.
-      //             }
-      //           ],
-      //           "action_id": "radio_buttons-action"
-      //         }
-      //       }
-      //     ]
-      //   }));
-      // } 
+      if (favoritedValue === 'seeFavs') {
+        // need to access an array of favorited jokes now based off that getUtil function,
+        // then loop thru each favorited item. 
+        const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
+        console.log('RANDOM FUNNY JOKE', savedFavJoke);
+      }
+    
+
+        
+        // await array1.forEach(favId => say({
+        //   'blocks': [
+        //     {
+        //       'type': 'section',
+        //       'text': {
+        //         'type': 'mrkdwn',
+        //         'text': 'Click to delete from your favs list !'
+        //       },
+        //       'accessory': {
+        //         'type': 'radio_buttons',
+        //         'options': [
+        //           {
+        //             'text': {
+        //               'type': 'plain_text',
+        //               'text': `${favId}`, // req.body.fav?
+        //               'emoji': true
+        //             },
+        //             'value': `${favId}` // if radio button value = favId, DELETE.
+        //           }
+        //         ],
+        //         'action_id': 'radio_buttons-action'
+        //       }
+        //     }
+        //   ]
+        // }));
+      
     });
       
     // Return to this code block once all FUNNY stuff has worked - transfer over salvageable code from above.
