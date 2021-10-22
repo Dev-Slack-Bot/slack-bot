@@ -213,8 +213,17 @@ app.action('button_click', async ({ body, ack, say }) => {
       if (favoritedValue === 'seeFavs') {
         // need to access an array of favorited jokes now based off that getUtil function,
         // then loop thru each favorited item. 
-        const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
-        console.log('RANDOM FUNNY JOKE', savedFavJoke);
+        // const savedFavJoke = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`);
+        const res = await fetch(`${process.env.BACKEND_URL}/favorites/${bodyId}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        console.log('RES JSON?!?!', res.json());
+        return res.json();
       }
     
 
