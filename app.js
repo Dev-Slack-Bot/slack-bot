@@ -193,7 +193,6 @@ app.action('button_click', async ({ body, ack, say }) => {
           `${process.env.BACKEND_URL}/favorites/${bodyId}`
         );
         const favoritesByUserId = await res.json();
-        // console.log('Favorite List by UserId ', favoritesByUserId);
         return favoritesByUserId;
       }
     });
