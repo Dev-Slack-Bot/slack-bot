@@ -126,44 +126,48 @@ app.action('button_click', async ({ body, ack, say }) => {
 
       if (favoritedValue === '1') {
         const validateUserId = await fetch(`${process.env.BACKEND_URL}/users/${bodyId}`); // cleared
+
         if (!validateUserId) {
-          await fetch(`${process.env.BACKEND_URL}/users`, { 
+          await fetch(`${process.env.BACKEND_URL}/users`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
+              Accept: 'application/json',
+            },
             body: JSON.stringify({
-              id: bodyId, username: userName, name
-            })
-          });
-         
-          // const url = `${process.env.BACKEND_URL}/favorites`;
-          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
-            body: JSON.stringify({
-              id: bodyId
-            })
+              id: bodyId,
+              username: userName,
+              name,
+            }),
           });
 
+          // const url = `${process.env.BACKEND_URL}/favorites`;
+          fetchMethod(postUserfetchURL, 'POST', postUserJSONbody);
+
+          // await fetch(`${process.env.BACKEND_URL}/favorites`, {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //     Accept: 'application/json',
+          //   },
+          //   body: JSON.stringify({
+          //     id: bodyId,
+          //   }),
+          });
         } else if (validateUserId) {
-          await fetch(`${process.env.BACKEND_URL}/favorites`, { 
+          await fetch(`${process.env.BACKEND_URL}/favorites`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Accept: 'application/json'
-            }, 
+              Accept: 'application/json',
+            },
             body: JSON.stringify({
-              userId: bodyId
-            })
+              userId: bodyId,
+            }),
           }); // cleared
 
+          await say(choice);
 
-        await say(choice);
         }
       }
     });

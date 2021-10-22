@@ -104,12 +104,12 @@ VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfrogg
 
 
 INSERT INTO funny (entree, course_id, times_viewed) VALUES 
-('It is looking like you might need a HARD refresh', '2', 1),
-('comments from canvas--CI not passing', '2', 1),
+('It is looking like you might need a HARD refresh', '2', 0),
+('comments from canvas--CI not passing', '2', 0),
 ('remember that one time Dan was a on a "roll" in the Role Model........', '3', 0 ),
-('you forget to ACP.....P(heroku for life)', '2', 1),
-('find s any s hidden s Ss today s?', '2', 1),
-('Play now, code later', '1', 1),
+('you forget to ACP.....P(heroku for life)', '2', 0),
+('find s any s hidden s Ss today s?', '2', 0),
+('Play now, code later', '1', 0),
 ('you will need this...trust the process', '1', 0),
 ('you got this!! byId', '2', 1),
 ('it is probably on that half line...ya know, 34 and half', '1', 1),
@@ -154,6 +154,7 @@ INSERT INTO funny (entree, course_id, times_viewed) VALUES
 ('q. Why do developer trolls love the terminal? a. Because their past-time is bashing!', '2', 0), 
 ('q. Why was the JavaScript developer sad? a. Because they did not Node how to Express himself', '2', 0), 
 ('dev1 > What tool do you use to switch versions of node? dev1> nvm, I figured it out.', '2', 0);
+
 
 INSERT INTO users (id, username, name) VALUES
 ('TRIANA1234', 'trianac', 'triana'),
