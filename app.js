@@ -120,7 +120,6 @@ app.action('button_click', async ({ body, ack, say }) => {
       
       await ack();
       const favoritedValue = body.actions[0].selected_option.value;
-
       const bodyId = body.user.id;
       const userName = body.user.username;
       const name = body.user.name;

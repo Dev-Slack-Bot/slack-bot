@@ -46,6 +46,7 @@ CREATE TABLE favorite (
 
 INSERT INTO course (course) VALUES ('Foundations_1'), ('Foundations_2'), ('Career Track');
 INSERT INTO tips (tip, tip_url, course_id, times_viewed) 
+
 VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfroggy.com/', '1', 3),
  ('Starting a new HTML doc? Try using html:5 at the start. Here is the Vscode link for html', 'https://code.visualstudio.com/docs/languages/html', '1', 1),
  ('Dont forget your crabby hands! "<> </>" when making a component in react', 'https://reactjs.org/docs/react-component.html', '2', 4), 
@@ -100,6 +101,7 @@ VALUES ('For help pracicing CSS flex, try Flexboxfroggy!', 'https://flexboxfrogg
 ('Take this for a read, it may be life changing', 'https://bradfrost.com/blog/post/atomic-web-design/', '2', 0),
 ('loops on loops on loops', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration', '1', 0),
 ('Keyboard shortcuts!!', 'https://itnext.io/keyboard-shortcuts-for-a-developer-e6d1203774f6', '1', 0);;
+
 
 INSERT INTO funny (entree, course_id, times_viewed) VALUES 
 ('It is looking like you might need a HARD refresh', '2', 1),
