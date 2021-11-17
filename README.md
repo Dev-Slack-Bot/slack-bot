@@ -27,7 +27,7 @@
 
 
 # DESCRIPTION
-Slact-Cat is a bot that will deliver a funny or tip on your request! Our bot can save the funny or tip of your choice to a favorites table! You can ask the bot to take a look at all your favorites later or delete it if you're done with it! Slack-Cat was built for enjoyment, hop in a say 'Hello' to our bot!
+Slack-Cat is a bot that will deliver a funny or tip on your request! Our bot can save the funny or tip of your choice to a favorites table! You can ask the bot to take a look at all your favorites later or delete it if you're done with it! Slack-Cat was built for enjoyment, hop in a say 'Hello' to our bot!
 
 
 # REFERENCES
